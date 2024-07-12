@@ -37,6 +37,7 @@ jobs:
       uses: microsoft/setup-msbuild@v2
       with:
         msbuild-architecture: x64
+        vs-version: "16.11"
 
     - name: Build
       run: msbuild "Plain Craft Launcher\Plain Craft Launcher.vbproj" -p:Configuration=${{ matrix.configuration }}
@@ -45,4 +46,4 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: ${{ matrix.configuration }} ${{ env.Describe }}
-        path: Plain Craft Launcher\obj\${{ matrix.configuration }}\Plain Craft Launcher.exe
+        path: ${{ matrix.configuration }}\Plain Craft Launcher.exe
